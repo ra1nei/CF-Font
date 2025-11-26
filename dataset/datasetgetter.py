@@ -3,7 +3,7 @@ from torchvision.datasets import ImageFolder
 import os
 import random
 import torchvision.transforms as transforms
-from datasets.custom_dataset import ImageFolerRemap, CrossdomainFolder, \
+from dataset.custom_dataset import ImageFolerRemap, CrossdomainFolder, \
     ImageFolerRemapPairCF, ImageFolerRemapUnpairCF, ImageFolerRemapPairbasis, \
     ImageFolerRemapPair, TwoDataset
 
