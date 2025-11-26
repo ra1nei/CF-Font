@@ -497,6 +497,9 @@ def map_exec_func(args):
 
 
 def save_model(args, epoch, networks, opts):
+    if (epoch + 1) % 20 != 0 and (epoch + 1) != args.epochs:
+        return
+    
     check_list = open(os.path.join(args.log_dir, "checkpoint.txt"), "a+")
     # if (epoch + 1) % (args.epochs//10) == 0:
     with torch.no_grad():
