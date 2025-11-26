@@ -26,7 +26,7 @@ from train.train import trainGAN
 from train.train_cf import trainGANCF
 from validation.validation import validateUN
 
-from datasets.datasetgetter import get_dataset, get_cf_dataset
+from dataset.datasetgetter import get_dataset, get_cf_dataset
 from tools.utils import makedirs, save_checkpoint
 from tools.ops import initialize_queue
 try:
