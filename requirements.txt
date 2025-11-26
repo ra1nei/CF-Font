@@ -4,7 +4,6 @@ numpy
 opencv-python  
 scipy
 sklearn
-matplotlib  
 pillow  
 tensorboardX
 scikit-image
