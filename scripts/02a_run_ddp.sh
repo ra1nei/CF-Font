@@ -1,5 +1,5 @@
-mkdir -p output
-mkdir -p output/models
+mkdir -p /kaggle/working/output
+mkdir -p /kaggle/working/output/models
 
 CUDA_VISIBLE_DEVICES=0,1  python -m torch.distributed.launch \
     --nproc_per_node=1 --use_env main.py \
@@ -9,10 +9,10 @@ CUDA_VISIBLE_DEVICES=0,1  python -m torch.distributed.launch \
     --output_k 240 \
     --batch_size 16 \
     --iters 1000 \
-    --epoch 200 \
+    --epoch 100 \
     --val_num 10 \
     --baseline_idx 0 \
-    --save_path output/models \
+    --save_path /kaggle/working/output/models \
     --model_name B0_K240BS32I1000E200_LR1e-4-wdl0.01 \
     --ddp \
     --wdl --w_wdl 0.01 \
