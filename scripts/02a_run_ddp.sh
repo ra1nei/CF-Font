@@ -18,5 +18,5 @@ CUDA_VISIBLE_DEVICES=0,1  python -m torch.distributed.launch \
     --wdl --w_wdl 0.01 \
     --no_val \
     --data_path /kaggle/working/CF-Font/my_data/train \
-    --load_model /kaggle/input/cf-font-ckpt/CF_ckpt
+    --load_model /kaggle/input/cf-font-ckpt
     # --load_model CF-Font/output/models/logs/B0_K240BS32I1000E200_LR1e-4-wdl0.01_20230426-233306
