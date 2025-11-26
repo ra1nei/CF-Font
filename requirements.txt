@@ -3,7 +3,7 @@ tqdm
 numpy
 opencv-python  
 scipy
-sklearn
+scikit-learn
 pillow  
 tensorboardX
 scikit-image
