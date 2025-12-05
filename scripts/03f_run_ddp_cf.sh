@@ -1,17 +1,23 @@
 set -x
 
-size=80
-item=180
+size=64
+item=100
 k=240
 basis_n=10
 data=/kaggle/working/CF-Font/my_data/train
-model_base=B0_K240BS32I1000E200_LR1e-4-wdl0.01_20230426-233306
-model_name=CF_from_${model_base}_${item}
-base_idxs="basis/${model_base}_${item}_basis_${k}_id_${basis_n}.txt"
-base_ws="basis/${model_base}_${item}_basis_${k}_id_${basis_n}_ws_${k}x${basis_n}_t0.01.pth"
 
-CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch \
-    --nproc_per_node=2 --use_env main.py \
+my_load_model="/kaggle/input/cf-font-ckpt/model_100.ckpt"
+
+model_name="CF_finetune_from_model_100"
+
+base_idxs="basis/PATH_TO_YOUR_BASIS_ID.txt" 
+base_ws="basis/PATH_TO_YOUR_BASIS_WS.pth"
+
+# -----------------------------
+
+# Chú ý: Nếu bạn chỉ có 1 GPU (Kaggle thường là 1), hãy sửa nproc_per_node=1
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch \
+    --nproc_per_node=1 --use_env main.py \
     --content_fusion \
     --img_size ${size} \
     --data_path ${data} \
@@ -23,7 +29,7 @@ CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch \
     --val_num 10 \
     --baseline_idx 0 \
     --save_path output/models \
-    --load_model ${model_name} \
+    --load_model ${my_load_model} \
     --base_idxs ${base_idxs} --base_ws ${base_ws} \
     --ddp \
     --no_val \
